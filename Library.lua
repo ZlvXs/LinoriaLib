@@ -32,7 +32,7 @@ local Library = {
     FontColor = Color3.fromRGB(255, 255, 255);
     MainColor = Color3.fromRGB(28, 28, 28);
     BackgroundColor = Color3.fromRGB(20, 20, 20);
-    AccentColor = Color3.fromRGB(159, 115, 255);
+    AccentColor = Color3.fromRGB(208, 123, 255);
     OutlineColor = Color3.fromRGB(50, 50, 50);
     RiskColor = Color3.fromRGB(255, 50, 50),
 
@@ -3521,7 +3521,7 @@ function Library:CreateWindow(...)
             -- A bit scuffed, but if we're going from not toggled -> toggled we want to show the frame immediately so that the fade is visible.
             Outer.Visible = true;
 
-            task.spawn(function()
+            --[[task.spawn(function()
                 -- TODO: add cursor fade?
                 local State = InputService.MouseIconEnabled;
 
@@ -3558,7 +3558,7 @@ function Library:CreateWindow(...)
 
                 Cursor:Remove();
                 CursorOutline:Remove();
-            end);
+            end);]]
         end;
 
         for _, Desc in next, Outer:GetDescendants() do
@@ -3605,7 +3605,9 @@ function Library:CreateWindow(...)
     Library:GiveSignal(InputService.InputBegan:Connect(function(Input, Processed)
         if type(Library.ToggleKeybind) == 'table' and Library.ToggleKeybind.Type == 'KeyPicker' then
             if Input.UserInputType == Enum.UserInputType.Keyboard and Input.KeyCode.Name == Library.ToggleKeybind.Value then
-                task.spawn(Library.Toggle)
+                if not Processed then
+                    task.spawn(Library.Toggle)
+                end
             end
         elseif Input.KeyCode == Enum.KeyCode.F1 or (Input.KeyCode == Enum.KeyCode.RightShift and (not Processed)) then
             task.spawn(Library.Toggle)
