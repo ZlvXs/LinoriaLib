@@ -8,7 +8,7 @@ local newInstance = Instance.new
 local fromRGB = Color3.fromRGB
 
 local notificationPositions = {
-    ["Middle"] = UDim2.new(0.445, 0, 0.7, 0),
+    ["Middle"] = UDim2.new(0.5, 0, 0.7, 0),
     ["MiddleRight"] = UDim2.new(0.85, 0, 0.7, 0),
     ["MiddleLeft"] = UDim2.new(0.01, 0, 0.7, 0),
     
