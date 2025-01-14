@@ -121,6 +121,18 @@ end
 Library:SetWatermarkVisibility(false)
 end)
 
+UITab:AddButton('panic button', function()
+    Library:Unload()
+    for i,v in pairs(Toggles) do
+    v:SetValue(false)
+    end
+end)
+
+local label = Tabs.UISettings:AddRightTabbox()
+local labeltab = label:AddTab('extra')
+labeltab:AddLabel('this is a<font color="#de6cff"> label</font>')
+labeltab:AddLabel('example by<font color="#de6cff"> @qquinx</font>')
+
 SaveManager:SetLibrary(Library)
 SaveManager:SetFolder('linoriaremake/folder')
 SaveManager:BuildConfigSection(Tabs.UISettings)
